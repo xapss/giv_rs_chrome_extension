@@ -1,0 +1,13 @@
+{
+  "name": "giv.rs",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "giv.rs is a FREE URL shortener. Each URL is redirected with an awareness booster from a charity of your choice. Your readers will be made aware of activities of the charity you support.",
+  "browser_action": {
+    "default_icon": "images/givrs.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs", "http://giv.rs/*"
+  ]
+}

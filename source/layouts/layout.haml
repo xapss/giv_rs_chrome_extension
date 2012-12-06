@@ -1,0 +1,13 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{content: 'IE=edge,chrome=1', 'http-equiv' => 'X-UA-Compatible'}
+    %meta{content: 'giv.rs is a FREE URL shortener.', name: :description}
+    %meta{content: 'Studentify', name: :author}
+    %meta{content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0', name: :viewport}
+    = javascript_include_tag 'jquery.min'
+    = yield_content :head
+    %title giv.rs
+  %body
+    = yield
