@@ -1,2 +1,54 @@
-html, body
-  background-color: #0099ff
+@import base
+
+html
+  font-family: 'Open Sans', sans-serif
+
+#actions, #settings_actions
+  border-top: 1px solid #000000
+  font-size: 0.75em
+
+#actions
+  padding: 1em
+
+#settings_actions
+  text-align: right
+
+#short_url
+  padding: 0em 1em 0.5em
+  font-weight: bold
+
+a
+  display: block
+  +unstyled-link
+
+%icon-before
+  display: block
+  float: left
+  margin: 0.25em
+  content: '\0000a0'
+  font-size: $base-font-size
+  width: $icon-size
+  height: $icon-size
+
+#copy:before
+  @extend %icon-before
+  +icons-sprite(copy)
+
+#statistics:before
+  @extend %icon-before
+  +icons-sprite(statistics)
+
+#qr_code:before
+  @extend %icon-before
+  +icons-sprite(qr_code)
+
+#twitter:before
+  @extend %icon-before
+  +icons-sprite(twitter)
+
+#facebook:before
+  @extend %icon-before
+  +icons-sprite(facebook)
+
+#short_url_qr_code
+  text-align: center
