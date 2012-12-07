@@ -17,7 +17,7 @@ $(document).ready ->
       url = "#{giv_rs}#{data._id}"
       statistics_url = "#{url}+"
       facebook_url = "https://www.facebook.com/dialog/feed?app_id=#{encodeURIComponent fb_app_id}&link=#{encodeURIComponent url}&picture=#{encodeURIComponent picture_url}&name=#{encodeURIComponent url}&caption=#{encodeURIComponent caption}&description=#{encodeURIComponent description}&redirect_uri=#{encodeURIComponent url}"
-      tweet_text = "#{url} @giv.rs"
+      tweet_text = "#{url} @giv_rs"
       twitter_url = "https://twitter.com/home?status=#{encodeURIComponent tweet_text}"
       short_url.attr 'href', url
       short_url.text url
