@@ -6,7 +6,9 @@
     %meta{content: 'giv.rs is a FREE URL shortener.', name: :description}
     %meta{content: 'Studentify', name: :author}
     %meta{content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0', name: :viewport}
-    = yield_content :head
+    = yield_content :stylesheets
+    = javascript_include_tag 'jquery.min'
+    = yield_content :javascripts
     %title giv.rs
   %body
     = yield

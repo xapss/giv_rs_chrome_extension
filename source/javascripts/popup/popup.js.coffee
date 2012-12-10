@@ -12,7 +12,7 @@ $(document).ready ->
   chrome.tabs.getSelected null, (tab) ->
     $.post giv_rs,
       link:
-        url: tab.url
+        $.extend localStorage, {url: tab.url}
     , (data) ->
       url = "#{giv_rs}#{data._id}"
       statistics_url = "#{url}+"

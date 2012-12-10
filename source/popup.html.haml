@@ -1,5 +1,7 @@
-- content_for :head do
+- content_for :stylesheets do
   = stylesheet_link_tag 'popup'
+- content_for :javascripts do
+  = javascript_include_tag 'jquery.qrcode.min'
   = javascript_include_tag 'popup'
 
 %a#short_url{href: '#', target: :_blank}
