@@ -1,12 +1,12 @@
 {
   "name": "giv.rs",
-  "version": "1.0",
-  "manifest_version": 2,
+  "version": "1.0.2",
+  "manifest_version": 4,
   "description": "One-click URL shortener for giv.rs. Each URL is redirected with an awareness booster from a charity of your choice.",
   "offline_enabled": false,
   "options_page": "options.html",
   "browser_action": {
-    "default_icon": "images/givrs.png",
+    "default_icon": "images/icon.png",
     "default_popup": "popup.html"
   },
   "permissions": [
