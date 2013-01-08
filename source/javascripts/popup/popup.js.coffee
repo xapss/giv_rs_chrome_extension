@@ -44,6 +44,8 @@ $(document).ready ->
           elem.unselectable = "on"
           document.execCommand "UnSelect"
           short_url.blur()
+          short_url.fadeOut ->
+            short_url.fadeIn()
         $('#qr_code').click (e) ->
           e.preventDefault()
           $('#short_url_qr_code').qrcode
