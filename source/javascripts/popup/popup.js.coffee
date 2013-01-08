@@ -32,7 +32,7 @@ $(document).ready ->
         statistics.attr 'href', statistics_url
         facebook.attr 'href', facebook_url
         twitter.attr 'href', twitter_url
-        $('#copy').click (e) ->
+        $('#copy, #short_url').click (e) ->
           e.preventDefault()
           elem = short_url.get(0)
           elem.contentEditable = true
