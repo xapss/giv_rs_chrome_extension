@@ -16,6 +16,11 @@ $(document).ready ->
   statistics = $('#statistics')
   facebook = $('#facebook')
   twitter = $('#twitter')
+  settings = $('#settings')
+  $(settings).click (e) ->
+    e.preventDefault()
+    chrome.tabs.create
+      url: chrome.extension.getURL 'options.html'
   chrome.tabs.getSelected null, (tab) ->
     find_original_url tab.url, (original_url) ->
       $.post giv_rs,
