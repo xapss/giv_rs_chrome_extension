@@ -12,5 +12,5 @@
   "permissions": [
     "tabs", "http://giv.rs/*"
   ],
-  "content_security_policy": "script-src 'self' https://platform.twitter.com/widgets.js; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://platform.twitter.com; object-src 'self'"
 }
