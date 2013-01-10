@@ -13,14 +13,14 @@ $(document).ready ->
     $.each data, (_, cause) ->
       $('#cause_list').append("<a class='cause' href='#cause_#{cause._id}' id='cause_#{cause._id}'><label style='background-image: url(#{cause.logo.frame.url})' title='#{cause.name}'>#{cause.name}</label><input name='cause_id' type='radio' value='#{cause._id}'></a>")
     $('#settings').values(localStorage)
-    update_causes $('.redirect_type input[checked]').val()
-    $('.cause input[checked]').parent().click()
+    update_causes $('.redirect_type input:checked').val()
+    $('.cause input:checked').parent().click()
     $(document).on 'change', 'input[type=radio]', ->
       $(@).parents('form').submit()
 
 $(document).on 'submit', '#settings', (e) ->
   e.preventDefault()
-  unless cause_disabled($('.redirect_type input[checked]').val()) && $('.cause input[checked]').length == 0
+  if cause_disabled($('.redirect_type input:checked').val()) || $('.cause input:checked').length == 1
     $.extend localStorage, $(@).values()
     localStorage.removeItem 'cause_id' if cause_disabled localStorage['redirect_type']
 
