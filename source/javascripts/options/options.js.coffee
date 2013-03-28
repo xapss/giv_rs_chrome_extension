@@ -10,8 +10,15 @@ update_redirect_types = ->
   if !redirect_type || cause_disabled redirect_type
     $('#redirect_frame input').prop('checked', true).click()
 
+setHeader = (xhr) ->
+  xhr.setRequestHeader "Accept", "application/json"
+      
 $(document).ready ->
-  $.getJSON 'http://giv.rs/causes', ->
+  $.ajax(
+    url: "http://giv.rs/causes"
+    type: "GET"
+    beforeSend: setHeader
+  ).done (data) ->
     $.each data, (_, cause) ->
       cause_input_id = "cause_#{cause._id}"
       cause_input = $('<input>')
