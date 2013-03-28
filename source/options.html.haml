@@ -3,39 +3,46 @@
 - content_for :javascripts do
   = javascript_include_tag 'options'
 
-%section#container
+%section#options
 
   %header#logo
     %h1
       %a{href: 'http://giv.rs/', target: :_blank} giv.rs
 
   %form#settings
-    %section#redirect_types
+    %section#causes_list
       %header
-        %p Type of redirect you want to use:
-      #redirect_types_list
-        %a#redirect_frame.redirect_type{href: '#redirect_frame'}
-          .input
-            %input{type: :radio, name: :redirect_type, value: :frame}
-            %label{title: 'elegant banner'} elegant banner
-          %p.explanation show a small awareness booster (in a frame) for a charity of your choice.
-        %a#redirect_timer.redirect_type{href: '#redirect_timer'}
-          .input
-            %input{type: :radio, name: :redirect_type, value: :timer}
-            %label{title: '2 seconds full screen'} 2 seconds full screen
-          %p.explanation before your link loads, show a 2 second fullscreen awareness booster.
-        %a#redirect_redirect.redirect_type{href: '#redirect_redirect'}
-          .input
-            %input{type: :radio, name: :redirect_type, value: :redirect}
-            %label{title: 'clean redirect'} clean redirect
-          %p.explanation no awareness booster, clean redirect like any other url shortener.
-    %section#causes
+        %h1 Supporting charity
+        .description This is the current charity you are supporting. Every link you create, will have this charity as default value.
+      #causes
+
+    %section#redirect_types_list
       %header
-        %p Charity you support:
-      #cause_list_wrapper
-        #cause_autocomplete_wrapper
-          %input#cause_autocomplete{type: :text}
-        #cause_list
+        %h1 Preferred giv.rs type
+        .description You can set a preferred type so that next time you shorten a link, it can be done with a single click.
+      #redirect_types
+        %article#redirect_frame.redirect_type
+          .icon
+          %h2 elegant banner
+          .description
+            show a small awareness booster (in a frame) for a charity of your choice. Example:
+            %a{href: 'http://giv.rs/elegant_banner', target: :_blank} giv.rs/elegant_banner
+          %input{name: :redirect_type, type: :radio, value: :frame}
+        %article#redirect_timer.redirect_type
+          .icon
+          %h2 4 sec fullscreen
+          .description
+            before your link loads, show a 4 second fullscreen awareness booster. Example:
+            %a{href: 'http://giv.rs/4_sec_fullscreen', target: :_blank} giv.rs/4_sec_fullscreen
+          %input{name: :redirect_type, type: :radio, value: :timer}
+        %article#redirect_redirect.redirect_type
+          .icon
+          %h2 clean redirect
+          .description
+            no awareness booster, clean redirect like any other url shortener. Example:
+            %a{href: 'http://giv.rs/clean_redirect', target: :_blank} giv.rs/clean_redirect
+          %input{name: :redirect_type, type: :radio, value: :redirect}
+
     %section#about
       %p
         %a.twitter-follow-button{:'data-show-count' => false, href: 'https://twitter.com/giv_rs'} Follow @giv_rs

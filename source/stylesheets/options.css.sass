@@ -1,98 +1,149 @@
 @import base
 
-%small
-  font-size: 0.813em
-  color: #777777
+$total-columns: 1
+$column-width: 274px
+$gutter-width: 12px
+$grid-padding: $gutter-width
+$break: 3
 
-#container
-  +container
+%list-box
+  border: 1px solid #fff
+  +border-radius(5px)
+  +clearfix
 
-#logo
-  +span-columns(4 omega, $total-columns)
-  +suffix($total-columns - 4, $total-columns)
-  background-image: url(../images/logo.png)
-  +background-origin(content-box)
-  +background-clip(content-box)
-  +background-size(60%)
-  background-position: center center
-  background-repeat: no-repeat
+%list-elem-box
+  +box-sizing(border-box)
+  cursor: pointer
   text-align: center
-  h1
-    font-size: 4em
-  a
-    +unstyled-link
-    color: rgba(0, 0, 0, 0)
-
-#settings
-  clear: both
-  > section
-    margin-top: 2em
-    clear: both
-    overflow: hidden
-    > header
-      @extend %small
-      +span-columns(3, $total-columns)
-
-#redirect_types_list
-  +span-columns($total-columns - 3 omega, $total-columns)
-
-.redirect_type
-  display: block
-  +unstyled-link
-  label
-    font-size: 0.938em
-    color: #0099FF
-  .input
-    +span-columns(3, $total-columns - 3)
-  .explanation
-    @extend %small
-    margin: 0
-    +span-columns($total-columns - 3 - 3 omega, $total-columns - 3)
-
-#cause_list_wrapper
-  +span-columns(4 omega, $total-columns)
-  +suffix($total-columns - 4 - 3, $total-columns)
-
-#cause_autocomplete_wrapper
-  padding: 0 0.625em
-  border: 1px solid #cccccc
-  +border-radius(0.25em)
-
-#cause_list
-  border: 1px solid #cccccc
-  +border-radius(0.25em)
-
-#cause_autocomplete
-  margin: 0
-  padding: 0
-  border: 0
-  outline: 0
-  background-color: transparent
-  width: 100%
-  height: 2.308em
-  font-size: 0.813em
-
-.cause
-  display: block
-  width: 100%
-  height: $cause-height
-  line-height: $cause-height
-  +unstyled-link
+  +border-radius(4px)
+  h2
+    +text-shadow(0px 0px 1px rgba(0,0,0,0.5))
+    font-size: 20px
+    font-weight: normal
+  .description
+    font-size: 13px
+    a
+      +unstyled-link
   input
     display: none
-  label
-    display: block
-    +background-size(auto 2.462em)
-    background-position: 1.538em center
-    background-repeat: no-repeat
-    padding-left: 11em
-    font-size: 0.813em
-  &:hover
-    label
-      background-color: #eeeeee
   &.selected
-    label
-      background-color: #dddddd
+    background-color: #eeeeee
+    +box-shadow(inset 0px 0px 30px #dddddd)
+    h2
+      color: #f7971d
+    .description
+      color: #000000
+      a
+        color: #00aced
+
+%button-box
+  border: 1px solid #fff
+  +border-radius(4px)
+  +box-shadow(0px 0px 1px rgba(0,0,0,0.14))
+
+html, body
+  +background(rgb(0,115,174))
+  +background(radial-gradient(34% 41%, circle closest-corner, rgb(0,174,239) 0%, rgb(0,115,174) 100%) fixed)
+  width: 100%
+  margin: 0
+  padding: 0
+  font-family: 'Open Sans', sans-serif
+  font-weight: 400
+  color: #fff
+
+#options
+  +container($total-columns, $break)
+
+#settings
+  > section
+    margin-top: 2em
+    header
+      clear: both
+      color: #fff
+      font-size: 15px
+      font-weight: 300
+      +text-shadow(0px 0px 1px rgba(0,0,0,0.5))
+      text-align: center
+      margin: 6px 0
+    h1
+      font-size: 20px
+      font-weight: bold
+      margin: 6px 0
+
+a
+  +unstyled-link
+
+#logo
+  background: url(../images/logo.png) no-repeat center
+  background-size: 100%
+  width: 185px
+  height: 132px
+  margin: 24px auto
+  &:hover
+    +opacity(0.7)
+  h1
+    margin: 0
+    font-size: 4em
+    line-height: 132px
+    color: rgba(255, 255, 255, 0)
+
+#causes_list
+  +pie-clearfix
+
+.cause
+  @extend %button-box
+  +at-breakpoint($break)
+    +span-columns(1, $break)
+    +nth-omega(3n, of-type)
+  overflow: hidden
+  +box-sizing(border-box)
+  font-size: 36px
+  text-align: center
+  height: 74px
+  line-height: 74px
+  background-color: #000
+  background-position: center center
+  background-repeat: no-repeat
+  +background-size(100%)
+  padding: 0
+  margin-top: 6px
+  margin-bottom: 6px
+  &:hover
+    +box-shadow(0px 0px 10px rgba(255,255,255,0.75))
+  &.selected
+    +box-shadow(0px 0px 20px rgba(255,255,255,0.75))
+  input, label
+    display: none
+  cursor: pointer
+
+#redirect_types
+  @extend %list-box
+
+.redirect_type
+  +at-breakpoint($break)
+    +span-columns(1, $break)
+    +nth-omega(3n, of-type)
+  @extend %list-elem-box
+  height: 292px
+  padding: 24px
+  &.selected
+    .icon
+      +opacity(1.0)
+  .icon
+    width: 220px
+    height: 120px
+    background-repeat: no-repeat
+    background-position: center
+    +opacity(0.2)
+
+#redirect_frame .icon
+  background-image: url('../images/redirect_frame.png')
+#redirect_timer .icon
+  background-image: url('../images/redirect_timer.png')
+#redirect_redirect .icon
+  background-image: url('../images/redirect_redirect.png')
 
 #about
-  @extend %small
+  font-size: 15px
+  font-weight: 300
+  text-align: center
