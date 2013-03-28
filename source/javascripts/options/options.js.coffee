@@ -10,42 +10,41 @@ update_redirect_types = ->
   if !redirect_type || cause_disabled redirect_type
     $('#redirect_frame input').prop('checked', true).click()
 
-setHeader = (xhr) ->
-  xhr.setRequestHeader "Accept", "application/json"
-      
 $(document).ready ->
-  $.ajax(
+  $.ajax
     url: "http://giv.rs/causes"
     type: "GET"
-    beforeSend: setHeader
-  ).done (data) ->
-    $.each data, (_, cause) ->
-      cause_input_id = "cause_#{cause._id}"
-      cause_input = $('<input>')
-        .attr('id', cause_input_id)
-        .attr('name', 'cause_id')
-        .attr('type', 'radio')
-        .attr 'value', cause._id
-      cause_label = $('<label></label>')
-        .attr('for', cause_input_id)
-        .text cause.name
-      cause_article = $('<article></article>')
-        .addClass('cause')
-        .attr('title', cause.name)
-        .css('background-image', "url(#{cause.button.url})")
-        .append(cause_input)
-        .append cause_label
-      $('#causes').append(cause_article)
+    beforeSend: (xhr) ->
+      xhr.setRequestHeader "Accept", "application/json"
+    success: (data) ->
+      $.each data, (_, cause) ->
+        cause_input_id = "cause_#{cause._id}"
+        cause_input = $('<input>')
+          .attr('id', cause_input_id)
+          .attr('name', 'cause_id')
+          .attr('type', 'radio')
+          .attr 'value', cause._id
+        cause_label = $('<label></label>')
+          .attr('for', cause_input_id)
+          .text cause.name
+        cause_article = $('<article></article>')
+          .addClass('cause')
+          .attr('title', cause.name)
+          .css('background-image', "url(#{cause.button.url})")
+          .append(cause_input)
+          .append cause_label
+        $('#causes').append(cause_article)
 
-    $('#settings').values(localStorage)
-    $('input:checked').click()
+      $('#settings').values(localStorage)
+      $('input:checked').click()
 
-    $(document).on 'change', '.redirect_type input', ->
-      update_causes $(@).val()
-    $(document).on 'change', '.cause input', ->
-      update_redirect_types()
-    $(document).on 'change', 'input[type=radio]', ->
-      $(@).parents('form').submit()
+      $(document).on 'change', '.redirect_type input', ->
+        update_causes $(@).val()
+      $(document).on 'change', '.cause input', ->
+        update_redirect_types()
+      $(document).on 'change', 'input[type=radio]', ->
+        $(@).parents('form').submit()
+
 
 $(document).on 'submit', '#settings', (e) ->
   e.preventDefault()
