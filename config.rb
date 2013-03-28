@@ -74,6 +74,7 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 
-  ignore 'images/icons/*.png'
+  ignore 'images/share/*.png'
+  ignore 'images/action/*.png'
   ignore 'javascripts/*/*'
 end

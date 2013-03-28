@@ -1,51 +1,52 @@
 @import base
+@import share
+@import action
 
-#actions, #settings_actions
-  border-top: 1px solid #000000
-  font-size: 0.75em
-
-#actions
-  padding: 1em
-
-#settings_actions
-  text-align: right
-
-#short_url
-  padding: 0em 1em 0.5em
-  font-weight: bold
+html
+  +background(linear-gradient(rgb(0,174,239) 0%,rgb(0,115,174) 100%))
+  +border-radius(5px)
+  color: #fff
 
 a
   display: block
   +unstyled-link
 
-%icon-before
-  display: block
-  float: left
-  margin: 0.25em
-  content: '\0000a0'
-  font-size: $base-font-size
-  width: $icon-size
-  height: $icon-size
-
-#copy:before
-  @extend %icon-before
-  +icons-sprite(copy)
-
-#statistics:before
-  @extend %icon-before
-  +icons-sprite(statistics)
-
-#qr_code:before
-  @extend %icon-before
-  +icons-sprite(qr_code)
-
-#twitter:before
-  @extend %icon-before
-  +icons-sprite(twitter)
-
-#facebook:before
-  @extend %icon-before
-  +icons-sprite(facebook)
-
-#short_url_qr_code
+#short_url
+  clear: both
+  +box-shadow(0px 1px 0px rgba(0,0,0,0.1))
+  background-color: #3AB200
   text-align: center
+  font-size: 1.375em
+  line-height: 2em
+  min-width: 232px
+
+#share
+  text-align: center
+  margin: 16px
+
+#logo
+  background: url(../images/logo.png) no-repeat center
+  width: 90px
+  height: 64px
+  margin: 18px auto
+  &:hover
+    +opacity(0.7)
+  h1
+    margin: 0
+    font-size: 2em
+    line-height: 64px
+    color: rgba(255, 255, 255, 0)
+
+#qr_code_wrapper
+  display: none
+
+#qr_code_image
+  display: block
+  margin: 0 auto
+
+hr
+  height: 1px
+  background-color: #2fadf5
+  border-width: 1px 0
+  border-style: solid
+  border-color: #00679c

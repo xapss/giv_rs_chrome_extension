@@ -1,0 +1,20 @@
+@import '../images/share/*.png'
+
+.share-sprite
+  +inline-block
+  width: 32px
+  height: 28px
+  &:hover
+    +opacity(0.7)
+
+#twitter
+  @include share-sprite(twitter)
+
+#facebook
+  @include share-sprite(facebook)
+
+#google
+  @include share-sprite(google)
+
+#linkedin
+  @include share-sprite(linkedin)

@@ -1,20 +1,32 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'popup'
 - content_for :javascripts do
-  = javascript_include_tag 'jquery.qrcode.min'
   = javascript_include_tag 'popup'
+
+%a#close{href: '#close'}
 
 %a#short_url{href: '#', target: :_blank}
   Loading...
 
-#actions
-  %a#copy{href: '#copy'} copy
+%section#share
+  %a#twitter{href: '#', title: 'tweet on Twitter', target: :_blank}
+  %a#facebook{href: '#', title: 'share on Facebook', target: :_blank}
+  %a#google{href: '#', title: 'share on Google+', target: :_blank}
+  %a#linkedin{href: '#', title: 'share on LinkedIn', target: :_blank}
+
+%hr
+
+%section#actions
+  //%a#edit{href: '#', target: :_blank} customize link
   %a#statistics{href: '#', target: :_blank} statistics
   %a#qr_code{href: '#qr_code'} qr-code
-  %a#twitter{href: '#', target: :_blank} tweet on Twitter
-  %a#facebook{href: '#', target: :_blank} share on Facebook
 
-#settings_actions
-  %a#settings{href: '#settings'} settings
+%section#qr_code_wrapper
+  %hr
 
-#short_url_qr_code
+%hr
+
+%section#about
+  %header#logo
+    %h1
+      %a{href: 'http://giv.rs/', target: :_blank} giv.rs
