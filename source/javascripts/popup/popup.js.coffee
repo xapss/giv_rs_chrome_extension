@@ -31,6 +31,7 @@ $(document).ready ->
   facebook = $('#facebook')
   google = $('#google')
   linkedin = $('#linkedin')
+  hootsuite = $('#hootsuite')
 
   #edit = $('#edit')
   statistics = $('#statistics')
@@ -52,6 +53,7 @@ $(document).ready ->
         google_url = "https://plus.google.com/share&url=#{url}"
         linkedin_url = "https://www.linkedin.com/shareArticle?mini=true&url=#{url}"
         qr_code_url = "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=#{url}"
+        hootsuite_url = "http://hootsuite.com/hootlet/load?address=#{url}"
 
         short_url.attr 'href', url
         short_url.text url_without_protocol
@@ -60,6 +62,7 @@ $(document).ready ->
         facebook.attr 'href', facebook_url
         google.attr 'href', google_url
         linkedin.attr 'href', linkedin_url
+        hootsuite.attr 'href', hootsuite_url
         qr_code_image = $('<img>').attr('id', 'qr_code_image').attr('src', qr_code_url)
         qr_code_wrapper.append(qr_code_image)
 
