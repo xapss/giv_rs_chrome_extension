@@ -10,12 +10,25 @@ update_redirect_types = ->
   if !redirect_type || cause_disabled redirect_type
     $('#redirect_frame input').prop('checked', true).click()
 
-$(document).ready ->
+load_user = ->
   $.ajax
-    url: "http://giv.rs/causes"
-    type: "GET"
+    url: 'http://giv.rs/current_user'
+    type: 'GET'
+    data:
+      auth_token: localStorage.auth_token
     beforeSend: (xhr) ->
-      xhr.setRequestHeader "Accept", "application/json"
+      xhr.setRequestHeader 'Accept', 'application/json'
+    success: (data) ->
+      $('#account').addClass 'logged_in'
+      $('#user_name').text data.name
+
+$(document).ready ->
+  load_user()
+  $.ajax
+    url: 'http://giv.rs/causes'
+    type: 'GET'
+    beforeSend: (xhr) ->
+      xhr.setRequestHeader 'Accept', 'application/json'
     success: (data) ->
       $.each data, (_, cause) ->
         cause_input_id = "cause_#{cause._id}"
@@ -52,3 +65,19 @@ $(document).on 'submit', '#settings', (e) ->
     $.extend localStorage, $(@).values()
     localStorage.removeItem 'cause_id' if cause_disabled localStorage['redirect_type']
 
+$(document).on 'click', '#log_in', (e) ->
+  e.preventDefault()
+  $(@).parents('form').submit()
+  load_user()
+
+$(document).on 'click', '#log_out', (e) ->
+  e.preventDefault()
+  $('#auth_token').val('')
+  localStorage.removeItem 'auth_token'
+  $.ajax
+    url: 'http://giv.rs/logout'
+    type: 'GET'
+    beforeSend: (xhr) ->
+      xhr.setRequestHeader 'Accept', 'application/json'
+    success: (data) ->
+      $('#account').removeClass 'logged_in'

@@ -44,6 +44,7 @@ $(document).ready ->
       $.post giv_rs,
         link:
           $.extend localStorage, {url: original_url}
+        auth_token: localStorage.auth_token
       , (data) ->
         url = "#{giv_rs}#{data._id}"
         url_without_protocol = "#{giv_rs_host}/#{data._id}"

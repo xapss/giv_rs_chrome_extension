@@ -10,12 +10,25 @@
       %a{href: 'http://giv.rs/', target: :_blank} giv.rs
 
   %form#settings
+    %section#account
+      %header
+        %h1 Your account
+        .description
+          If you login, we can synchronise your links, keep statistics and settings. You do this with you API key.
+          %a#get_api_key{href: 'http://giv.rs/settings', target: :_blank} Get one here
+      #api_key
+        %input#auth_token{name: :auth_token, type: :text, placeholder: 'api key', autocomplete: :off}
+        %a#log_in{href: '#log_in'} Log in
+      #user
+        #connected_as
+          Connected as:
+        #user_name
+        %a#log_out{href: '#log_out'} Log out and disconnect API key
     %section#causes_list
       %header
         %h1 Supporting charity
         .description This is the current charity you are supporting. Every link you create, will have this charity as default value.
       #causes
-
     %section#redirect_types_list
       %header
         %h1 Preferred giv.rs type
