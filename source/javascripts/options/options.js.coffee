@@ -21,6 +21,8 @@ load_user = ->
     success: (data) ->
       $('#account').addClass 'logged_in'
       $('#user_name').text data.name
+      for option in ['cause_id', 'redirect_type']
+        localStorage.setItem option, data[option] if data[option] && !localStorage[option]
 
 $(document).ready ->
   load_user()
